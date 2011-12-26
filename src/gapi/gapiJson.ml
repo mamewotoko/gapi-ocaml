@@ -1,6 +1,18 @@
 open GapiCore
 open GapiUtils.Infix
 
+module type Data =
+sig
+  type t
+
+  val empty : t
+
+  val render : t -> GdataCore.xml_data_model list
+
+  val parse : t -> GdataCore.xml_data_model -> t
+
+end
+
 type json_data_type =
     Object
   | Array
@@ -20,6 +32,18 @@ let metadata_description { name = n; data_type = dt } =
   Printf.sprintf "name=%s data_type=%s" n (json_data_type_to_string dt)
 
 type json_data_model = (json_metadata, Json_type.t) AnnotatedTree.t
+
+module type JsonData =
+sig
+  type t
+
+  val empty : t
+
+  val render : t -> json_data_model list
+
+  val parse : t -> json_data_model -> t
+
+end
 
 let unexpected r e =
   match e with
@@ -76,6 +100,10 @@ let render_root render x =
   render x
     |> List.hd
 
+let to_data_model (type s) json_data =
+  let module Data = (val json_data : JsonData with type t = s) in
+    render_root Data.render
+
 let parse_children parse_child empty_element update cs =
   let element = List.fold_left
                   parse_child
@@ -104,6 +132,10 @@ let parse_root parse_object empty_object tree =
           cs
     | e ->
         unexpected "GapiJson.parse_root" e
+
+let of_data_model (type s) json_data =
+  let module Data = (val json_data : JsonData with type t = s) in
+    parse_root Data.parse Data.empty
 
 let json_to_data_model json_value =
   let rec map (name, value) =

@@ -14,6 +14,18 @@ val metadata_description : json_metadata -> string
 
 type json_data_model = (json_metadata, Json_type.t) GapiCore.AnnotatedTree.t
 
+module type JsonData =
+sig
+  type t
+
+  val empty : t
+
+  val render : t -> json_data_model list
+
+  val parse : t -> json_data_model -> t
+
+end
+
 val unexpected : string -> json_data_model -> 'a
 
 val render_value :
@@ -76,6 +88,11 @@ val render_root :
   'a ->
   json_data_model
 
+val to_data_model :
+  (module JsonData with type t = 'a) ->
+  'a ->
+  json_data_model
+
 val parse_children :
   ('a -> json_data_model -> 'a) ->
   'a ->
@@ -94,6 +111,11 @@ val parse_root :
   ('a -> json_data_model -> 'a) ->
   'a ->
   json_data_model ->
+  'a
+
+val of_data_model :
+  (module JsonData with type t = 'a) ->
+  (json_metadata, Json_type.t) GapiCore.AnnotatedTree.t ->
   'a
 
 val json_to_data_model :

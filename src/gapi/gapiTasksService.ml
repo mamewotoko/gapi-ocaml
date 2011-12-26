@@ -121,7 +121,7 @@ struct
     GapiJson.parse_json_response TaskList.of_data_model
 
   let render_resource =
-    GapiJson.render_json TaskList.to_data_model
+    GapiJson.render_json (GapiJson.to_data_model (TaskList))
 
   let create_resource_from_id id =
     { TaskList.empty with
