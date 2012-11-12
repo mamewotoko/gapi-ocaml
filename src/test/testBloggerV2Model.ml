@@ -1,6 +1,5 @@
 open OUnit
 open GapiLens.Infix
-open GapiUtils.Infix
 open GapiBloggerV2Model
 
 let test_parse_blog () =

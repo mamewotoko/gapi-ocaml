@@ -1,3 +1,5 @@
+open Batteries
+
 let authorization_code_url
       ?(base_url = "https://accounts.google.com/o/oauth2/auth")
       ?(access_type = "offline")

@@ -1,3 +1,5 @@
+open Batteries
+
 module Error =
 struct
   type t =
@@ -104,7 +106,7 @@ let get_auth_token
   let rec parse_next_line pipe =
     try
       let line = GapiPipe.OcamlnetPipe.read_line pipe in
-      let (key, value) = ExtString.String.split line "=" in
+      let (key, value) = String.split line "=" in
         match key with
             "Auth" ->
               GapiConversation.Done (GapiAuthResponse.ClientLoginAuthToken

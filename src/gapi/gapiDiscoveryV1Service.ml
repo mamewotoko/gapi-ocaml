@@ -1,6 +1,6 @@
 (* Warning! This file is generated. Modify at your own risk. *)
 
-open GapiUtils.Infix
+open Batteries
 open GapiDiscoveryV1Model
 
 module ApisResource =

@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 
 let build_client_login_auth test_config =
   let get = Config.get test_config in
@@ -80,7 +80,7 @@ let do_request
         interact
     with
         Failure message as e ->
-          if ExtString.String.exists
+          if String.exists
                message "CURLE_OPERATION_TIMEOUTED" then
             try_request ()
           else
@@ -227,7 +227,7 @@ let assert_equal_file file_name s =
     with End_of_file ->
       Buffer.contents buffer
   in
-    OUnit.assert_equal ~printer:Std.identity file_content s
+    OUnit.assert_equal ~printer:identity file_content s
 
 let assert_exists msg pred xs =
   OUnit.assert_bool msg (List.exists pred xs)

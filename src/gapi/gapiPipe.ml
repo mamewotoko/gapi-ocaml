@@ -1,3 +1,5 @@
+open Batteries
+
 module OcamlnetPipe =
 struct
   type t = {

@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 
 let ns_gAcl = "http://schemas.google.com/acl/2007"

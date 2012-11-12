@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 open GdataDocumentsV3Model
 
@@ -251,41 +251,41 @@ struct
         else
           []
     in
-      [param (fun p -> p.author) Std.identity "author";
-       param (fun p -> p.category) Std.identity "category";
+      [param (fun p -> p.author) identity "author";
+       param (fun p -> p.category) identity "category";
        param (fun p -> p.max_results) string_of_int "max-results";
        param (fun p -> p.prettyprint) string_of_bool "prettyprint";
        param (fun p -> p.published_min) GapiDate.to_string "published-min";
        param (fun p -> p.published_max) GapiDate.to_string "published-max";
-       param (fun p -> p.q) Std.identity "q";
+       param (fun p -> p.q) identity "q";
        param (fun p -> p.start_index) string_of_int "start-index";
        param (fun p -> p.strict) string_of_bool "strict";
        param (fun p -> p.updated_min) GapiDate.to_string "updated-min";
        param (fun p -> p.updated_max) GapiDate.to_string "updated-max";
-       param (fun p -> p.title) Std.identity "title";
+       param (fun p -> p.title) identity "title";
        param (fun p -> p.title_exact) string_of_bool "title-exact";
        param (fun p -> p.opened_min) GapiDate.to_string "opened-min";
        param (fun p -> p.opened_max) GapiDate.to_string "opened-max";
        param (fun p -> p.edited_min) GapiDate.to_string "edited-min";
        param (fun p -> p.edited_max) GapiDate.to_string "edited-max";
-       param (fun p -> p.owner) Std.identity "owner";
-       param (fun p -> p.writer) Std.identity "writer";
-       param (fun p -> p.reader) Std.identity "reader";
+       param (fun p -> p.owner) identity "owner";
+       param (fun p -> p.writer) identity "writer";
+       param (fun p -> p.reader) identity "reader";
        param (fun p -> p.showfolders) string_of_bool "showfolders";
        param (fun p -> p.showdeleted) string_of_bool "showdeleted";
        param (fun p -> p.showroot) string_of_bool "showroot";
        param (fun p -> p.ocr) string_of_bool "ocr";
-       param (fun p -> p.ocr_language) Std.identity "ocr-language";
-       param (fun p -> p.targetLanguage) Std.identity "targetLanguage";
-       param (fun p -> p.sourceLanguage) Std.identity "sourceLanguage";
+       param (fun p -> p.ocr_language) identity "ocr-language";
+       param (fun p -> p.targetLanguage) identity "targetLanguage";
+       param (fun p -> p.sourceLanguage) identity "sourceLanguage";
        param (fun p -> p.delete) string_of_bool "delete";
        param (fun p -> p.convert) string_of_bool "convert";
        param (fun p -> p.remaining_changestamps_first) string_of_int "remaining-changestamps-first";
        param (fun p -> p.remaining_changestamps_limit) string_of_int "remaining-changestamps-limit";
        param (fun p -> p.expand_acl) string_of_bool "expand-acl";
-       param (fun p -> p.format) Std.identity "format";
-       param (fun p -> p.exportFormat) Std.identity "exportFormat";
-       param (fun p -> p.gid) Std.identity "gid";
+       param (fun p -> p.format) identity "format";
+       param (fun p -> p.exportFormat) identity "exportFormat";
+       param (fun p -> p.gid) identity "gid";
        param (fun p -> p.new_revision) string_of_bool "new-revision";
        param (fun p -> p.send_notification_emails) string_of_bool "send-notification-emails";
        param (fun p -> p.include_profile_info) string_of_bool "include-profile-info"]

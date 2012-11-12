@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 open GdataACL
 

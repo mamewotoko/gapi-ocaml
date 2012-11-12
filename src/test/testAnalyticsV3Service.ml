@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiLens.Infix
 open GapiAnalyticsV3Model
 open GapiAnalyticsV3Service

@@ -1,6 +1,5 @@
 open OUnit
 open GapiLens.Infix
-open GapiUtils.Infix
 open GapiTasksV1Model
 
 let test_parse_task () =

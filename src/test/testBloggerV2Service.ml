@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiBloggerV2Model
 open GapiBloggerV2Service
 

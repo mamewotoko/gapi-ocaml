@@ -1,5 +1,7 @@
 (* Warning! This file is generated. Modify at your own risk. *)
 
+open Batteries
+
 module JsonSchema =
 struct
   module Annotations =

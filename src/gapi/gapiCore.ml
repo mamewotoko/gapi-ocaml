@@ -1,3 +1,5 @@
+open Batteries
+
 let library_version = "0.2"
 
 module AnnotatedTree = struct
@@ -128,8 +130,8 @@ struct
 
   let parse full_header =
     if String.contains full_header ':' then
-      let (key, v) = ExtString.String.split full_header ":" in
-      let value = ExtString.String.strip v in
+      let (key, v) = String.split full_header ":" in
+      let value = String.strip v in
         match key with
             "Content-Type" ->
               ContentType value
@@ -158,8 +160,8 @@ struct
           | _ ->
               KeyValueHeader (key, value)
     else
-      let stripped_header = ExtString.String.strip full_header in
-        if ExtString.String.starts_with stripped_header "HTTP" then
+      let stripped_header = String.strip full_header in
+        if String.starts_with stripped_header "HTTP" then
           Scanf.sscanf stripped_header "HTTP/%s %d %s@!"
             (fun version code reason ->
                HttpStatus (version, code, reason))

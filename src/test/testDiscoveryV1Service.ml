@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiDiscoveryV1Model
 open GapiDiscoveryV1Service
 

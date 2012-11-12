@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 
 let ns_docs = "http://schemas.google.com/docs/2007"

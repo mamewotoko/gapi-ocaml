@@ -1,7 +1,6 @@
 open OUnit
 open GapiAnalyticsV3Model
 open GapiLens.Infix
-open GapiUtils.Infix
 
 let test_parse_management_segments () =
   let segments_json =

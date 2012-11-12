@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiLens.Infix
 open GapiPagespeedonlineV1Model
 open GapiPagespeedonlineV1Service

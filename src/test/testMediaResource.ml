@@ -1,5 +1,5 @@
 open OUnit
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 
 let test_setup_upload () =

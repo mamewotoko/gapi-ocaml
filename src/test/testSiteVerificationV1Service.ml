@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiLens.Infix
 open GapiSiteVerificationV1Model
 open GapiSiteVerificationV1Service

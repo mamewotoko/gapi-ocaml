@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 open GdataAtom
 
 let ns_batch = "http://schemas.google.com/gdata/batch"

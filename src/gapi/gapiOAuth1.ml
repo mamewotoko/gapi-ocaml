@@ -1,3 +1,5 @@
+open Batteries
+
 let random_generator =
   lazy (Cryptokit.Random.pseudo_rng
           (Cryptokit.Random.string Cryptokit.Random.secure_rng 20))
@@ -209,7 +211,7 @@ let parse_token_info pipe =
   let rec parse_next_line response pipe =
     try
       let line = GapiPipe.OcamlnetPipe.read_line pipe in
-      let (key, value) = ExtString.String.split line "=" in
+      let (key, value) = String.split line "=" in
         match key with
             "Target" ->
               GapiConversation.Continue

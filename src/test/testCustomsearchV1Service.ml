@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiLens.Infix
 open GapiCustomsearchV1Model
 open GapiCustomsearchV1Service

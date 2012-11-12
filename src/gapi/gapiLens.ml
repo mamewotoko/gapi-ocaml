@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 
 type ('a, 'b) t = {
   get : 'a -> 'b;

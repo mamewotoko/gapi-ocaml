@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 
 (* Calendar event data types *)
 module RecurrenceExceptionEntry =
@@ -260,7 +260,7 @@ struct
             GdataAtom.parse_children
               RecurrenceExceptionEntry.of_xml_data_model
               RecurrenceExceptionEntry.empty
-              Std.identity
+              identity
               cs
         | e ->
             GdataUtils.unexpected e

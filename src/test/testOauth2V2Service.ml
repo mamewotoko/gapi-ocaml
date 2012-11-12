@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiOauth2V2Model
 open GapiOauth2V2Service
 

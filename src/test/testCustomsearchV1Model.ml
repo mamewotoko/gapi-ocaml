@@ -1,7 +1,6 @@
 open OUnit
 open GapiCustomsearchV1Model
 open GapiLens.Infix
-open GapiUtils.Infix
 
 let test_parse_search_results () =
   let search_json =

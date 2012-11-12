@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 
 module type Comments =
 sig
@@ -271,7 +271,7 @@ struct
             GdataAtom.parse_children
               parse_commentsFeedLink
               empty
-              Std.identity
+              identity
               cs
         | e ->
             GdataUtils.unexpected e

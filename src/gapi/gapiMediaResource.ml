@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 
 type destination =
     TargetFile of string
@@ -24,7 +24,7 @@ let range_spec = {
 let create_out_channel download =
   match download.destination with
     TargetFile filename ->
-      new Netchannels.output_channel (open_out filename)
+      new Netchannels.output_channel (Pervasives.open_out filename)
   | StringBuffer buf ->
       new Netchannels.output_buffer buf
   | ArrayBuffer arr ->
@@ -43,7 +43,7 @@ let generate_download_headers download =
         [GapiCore.Header.Range spec]
 
 let generate_range_spec ranges =
-  let n_to_s = Option.map_default Int64.to_string "" in
+  let n_to_s = Batteries.Option.map_default Int64.to_string "" in
   let range_strings =
     List.map
       (fun (range_start, range_end) ->
@@ -120,13 +120,13 @@ let get_basename filename =
 
 let get_resource_length = function
     File filename ->
-      let ch = open_in filename in
+      let ch = Pervasives.open_in filename in
         begin try
           let result = LargeFile.in_channel_length ch in
-            close_in ch;
+            Pervasives.close_in ch;
             result
         with e ->
-          close_in ch;
+          Pervasives.close_in ch;
           raise e
         end
   | String str ->
@@ -269,7 +269,7 @@ let fill_buffer channel buffer size =
     if pos = size then
       buffer
     else
-      let bytes = input channel buffer pos (size - pos) in
+      let bytes = Pervasives.input channel buffer pos (size - pos) in
         if bytes = 0 then
           String.sub buffer 0 pos
         else
@@ -282,16 +282,16 @@ let get_post_data upload_state =
     match upload_state.resource.source with
         File filename ->
           let buffer = String.create upload_state.chunk_size in
-          let ch = open_in filename in
+          let ch = Pervasives.open_in filename in
             begin try
               LargeFile.seek_in ch upload_state.current_offset;
               let result =
                 fill_buffer ch buffer upload_state.chunk_size
               in
-                close_in ch;
+                Pervasives.close_in ch;
                 result
             with e ->
-              close_in ch;
+              Pervasives.close_in ch;
               raise e
             end
       | String s ->

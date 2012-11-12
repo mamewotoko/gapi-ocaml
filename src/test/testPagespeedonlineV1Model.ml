@@ -1,7 +1,6 @@
 open OUnit
 open GapiPagespeedonlineV1Model
 open GapiLens.Infix
-open GapiUtils.Infix
 
 let test_parse_pagespeedonline_result () =
   let result_json =

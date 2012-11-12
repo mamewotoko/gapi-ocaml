@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 
 type curl_context =
     { curl : Curl.t;

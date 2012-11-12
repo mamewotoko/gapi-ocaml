@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiBigqueryV2Model
 
 open GapiLens.Infix

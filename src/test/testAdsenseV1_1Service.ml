@@ -1,5 +1,5 @@
 open OUnit
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 open GapiAdsenseV1_1Model
 open GapiAdsenseV1_1Service

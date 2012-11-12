@@ -1,6 +1,6 @@
 (* Warning! This file is generated. Modify at your own risk. *)
 
-open GapiUtils.Infix
+open Batteries
 open GapiOauth2V2Model
 
 module Scope =

@@ -1,3 +1,4 @@
+open Batteries
 open GapiCore
 open GapiJson
 
@@ -91,7 +92,7 @@ struct
           parse_children
             parse
             empty
-            Std.identity
+            identity
             cs
       | e ->
           unexpected "GapiService.SingleError.parse" e x
@@ -156,7 +157,7 @@ struct
           parse_children
             parse
             empty
-            Std.identity
+            identity
             cs
       | AnnotatedTree.Node
           ({ name = ""; data_type = Object },
@@ -164,7 +165,7 @@ struct
           parse_children
             parse
             empty
-            Std.identity
+            identity
             cs
       | e ->
           unexpected "GapiService.RequestError.parse" e x

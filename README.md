@@ -44,7 +44,7 @@ You will need the following libraries:
 * [Ocamlnet][] >= 3.3.5
 * [Ocurl][] >= 0.5.3
 * [Cryptokit][] >= 1.3.14
-* [ExtLib][] >= 1.5.1
+* [Batteries][] >= 2.0beta2
 * [Yojson][] >= 1.0.2
 * [Xmlm][] >= 1.0.2
 * [pa_monad][] >= 6.0 (syntax extension for Monads, optional)
@@ -57,7 +57,7 @@ This library was developed and tested on Ubuntu 12.04 LTS (64-bit).
 [Ocamlnet]: http://projects.camlcity.org/projects/ocamlnet.html
 [Ocurl]: http://sourceforge.net/projects/ocurl/
 [Cryptokit]: http://forge.ocamlcore.org/projects/cryptokit/
-[ExtLib]: http://code.google.com/p/ocaml-extlib/
+[Batteries]: http://batteries.forge.ocamlcore.org/
 [Yojson]: http://mjambon.com/yojson.html
 [Xmlm]: http://erratique.ch/software/xmlm/doc/Xmlm
 [pa_monad]: http://www.cas.mcmaster.ca/~carette/pa_monad/

@@ -1,7 +1,6 @@
 open OUnit
 open GapiAdsenseV1_1Model
 open GapiLens.Infix
-open GapiUtils.Infix
 
 let test_parse_accounts () =
   let accounts_json =

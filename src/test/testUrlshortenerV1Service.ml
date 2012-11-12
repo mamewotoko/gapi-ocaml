@@ -1,5 +1,4 @@
 open OUnit
-open GapiUtils.Infix
 open GapiLens.Infix
 open GapiUrlshortenerV1Model
 open GapiUrlshortenerV1Service

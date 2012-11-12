@@ -1,4 +1,5 @@
 open OUnit
+open Batteries
 open GapiLens.Infix
 
 let new_calendar_entry title =
@@ -255,11 +256,11 @@ let test_create_quick_add_event () =
                      session);
            assert_bool
              "startTime"
-             (ExtString.String.exists
+             (String.exists
                 (GapiDate.to_string w.GdataCalendar.When.startTime) "15:00:00");
            assert_bool
              "endTime"
-             (ExtString.String.exists
+             (String.exists
                 (GapiDate.to_string w.GdataCalendar.When.endTime) "15:30:00"))
 
 let test_create_recurring_event () =

@@ -1,4 +1,4 @@
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 open GapiLens.StateInfix
 open GapiDiscoveryV1Model
@@ -693,11 +693,11 @@ let generate_rest_method formatter inner_module_lens (id, rest_method) =
         (* Build complete url *)
         let build_path_to_add path =
           let splitted_path =
-            ExtString.String.nsplit path "/"
+            String.nsplit path "/"
           in
             List.map
               (fun p ->
-                 if ExtString.String.starts_with p "{" then
+                 if String.starts_with p "{" then
                    let id = String.sub p 1 (String.length p - 2) in
                    let { Field.ocaml_name; to_string_function; _ } =
                      methd |. Method.get_parameter_lens id
@@ -1016,6 +1016,9 @@ let build_schema_module =
     perform
       file <-- GapiLens.get_state file_lens;
 
+      let formatter = file.File.formatter in
+      lift_io $ Format.fprintf formatter "open Batteries@\n@\n";
+
       (* Insert schema module *)
       let schema_module =
         SchemaModule.create file.File.module_name in
@@ -1054,7 +1057,7 @@ let build_service_module =
                                   |-- File.module_name);
       lift_io $
         Format.fprintf formatter
-        "open GapiUtils.Infix@\nopen %s@\n@\n" schema_module_name;
+        "open Batteries@\nopen %s@\n@\n" schema_module_name;
 
       scopes <-- GapiLens.get_state
                    RestDescription.(State.service

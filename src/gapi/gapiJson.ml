@@ -1,5 +1,5 @@
+open Batteries
 open GapiCore
-open GapiUtils.Infix
 
 type json_data_type =
     Object
@@ -107,7 +107,7 @@ let parse_root parse_object empty_object tree =
         parse_children
           parse_object
           empty_object
-          Std.identity
+          identity
           cs
     | e ->
         unexpected "GapiJson.parse_root" e empty_object

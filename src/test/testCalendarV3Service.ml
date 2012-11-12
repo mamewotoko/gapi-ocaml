@@ -1,5 +1,5 @@
 open OUnit
-open GapiUtils.Infix
+open Batteries
 open GapiLens.Infix
 open GapiCalendarV3Model
 open GapiCalendarV3Service
