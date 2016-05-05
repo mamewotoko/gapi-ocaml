@@ -15,18 +15,19 @@ let application_name = "YOUR_APPLICATION_NAME"
  * the Google APIs Console *)
 let client_id = "YOUR_CLIENT_ID"
 let client_secret = "YOUR_CLIENT_SECRET"
-
+let refresh_access_token = None
+		      
 let configuration =
   { GapiConfig.default with
         GapiConfig.application_name = application_name;
         GapiConfig.auth = GapiConfig.OAuth2
                             { GapiConfig.client_id;
-                              client_secret } }
+                              client_secret;
+			      refresh_access_token}}
 
 (* Or your redirect URL for web based applications. *)
 let redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
-let scope = [GapiCalendarV3Service.scope]
-
+let scope = [GapiCalendarV3Service.Scope.calendar] 
 (* Step 1: Authorize --> *)
 let authorization_url =
   GapiOAuth2.authorization_code_url
@@ -124,7 +125,6 @@ let () =
                                 EventDateTime.dateTime =
                                   Netdate.create end_date };
        } in
-
        let (created_event, session) =
          EventsResource.insert
            ~calendarId:"primary"
@@ -147,20 +147,21 @@ let () =
        let end_date = start_date +. 3600.0 in
        let event = {
          Event.empty with
-             Event.organizer = { Event.OrganizerData.email =
-                                   "organizerEmail";
-                                 Event.OrganizerData.displayName =
-                                   "organizerDisplayName"; };
-             Event.attendees = [{ EventAttendee.empty with
-                                      EventAttendee.email = "attendeeEmail" }];
-             Event.iCalUID = "originalUID";
-             Event.start = { EventDateTime.empty with
-                                 EventDateTime.dateTime =
-                                   Netdate.create start_date };
-             Event._end = { EventDateTime.empty with
-                                EventDateTime.dateTime =
-                                  Netdate.create end_date };
-       } in
+           Event.organizer = {
+	     Event.Organizer.empty with
+	     Event.Organizer.email = "organizerEmail";
+             Event.Organizer.displayName = "organizerDisplayName";
+	   };
+           Event.attendees = [{ EventAttendee.empty with
+                                EventAttendee.email = "attendeeEmail" }];
+           Event.iCalUID = "originalUID";
+           Event.start = { EventDateTime.empty with
+                           EventDateTime.dateTime =
+                             Netdate.create start_date };
+           Event._end = { EventDateTime.empty with
+                          EventDateTime.dateTime =
+                            Netdate.create end_date };
+	 } in
 
        let (imported_event, session) =
          EventsResource.import
@@ -481,7 +482,7 @@ let () =
        let rule = {
          AclRule.empty with
              AclRule.scope = {
-               AclRule.ScopeData._type = "scopeType";
+               AclRule.Scope._type = "scopeType";
                value = "scopeValue";
              };
              role = "role"
