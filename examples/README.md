@@ -19,21 +19,27 @@ How to run calendar/samples.ml
     ```
     opam install -y gapi-opam
     ```
-3. modify google api config in calenar/samples.ml
+3. create oauth2 config file (e.g. .config)
 
-```
-let client_id = "YOUR_CLIENT_ID"
-let client_secret = "YOUR_CLIENT_SECRET"
-let redirect_uri = "http://localhost/" (* sample *)
-```
-
+    ```
+    oa2_id=CLIENT_ID
+    oa2_secret=SECRET
+    oa2_uri=REDIRECT_URI
+    access_token=CACHED_ACCESS_TOKEN(optional)
+    refresh_token=CACHED_REFRESH_TOKEN(optional)
+    ```
 * a) using ocaml interpreter
+1. edit config_file to refer oauth2 config file
+
+    ```
+    let config_file = ".config"
+   ```
 1. start ocaml
 
     ```
     ocaml
     ```
-2. inside ocaml
+2. inside ocaml interpreter, input following lines
 
     ```
     # #use "topfind";;
@@ -49,10 +55,10 @@ let redirect_uri = "http://localhost/" (* sample *)
   2. run
 
     ```
-    ./calendar_samples
+    ./calendar_samples .config
     ```
 * run
   * input code
 * result 
-  * task is listed?
+  * events of google calendar are listed
   * and more?
